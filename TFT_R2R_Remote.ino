@@ -7,7 +7,7 @@
  
  Based on clock sketch by Gilchrist 6/2/2014 1.0
  Adapted by Nathan Stevens 10/14/2022
- @version 1.0 10/14/2022 
+ @version 1.0 10/19/2022 
  
 A few colour codes:
  
@@ -75,9 +75,8 @@ const char REC = '5';
 const char REV_PLAY = '6';
 const char REC_MUTE = '7';
 
-// keep track if we playing or stopped
+// keep track if we are playing or stopped
 boolean playing = false;
-boolean paused = false;
 String mode = "STOP"; 
 
 void setup(void) {
@@ -251,10 +250,6 @@ void loop() {
       tft.fillRect (0, 70, 240, 20, TFT_BLACK);
       tft.setTextColor(colour);
       tft.drawRightString("MODE: ",75, 70, 4); // Right justified string drawing to x position 75
-      //String scolour = String(colour,HEX);
-      //scolour.toUpperCase();
-      //char buffer[20];
-      //command.toCharArray(buffer,20);
       tft.drawString(mode, 100, 70, 4);
     }
   }
