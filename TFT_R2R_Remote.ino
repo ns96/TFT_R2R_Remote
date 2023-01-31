@@ -1,13 +1,15 @@
 /*
  An simple project making use of the examples of the TTGO display and a
- an ULN2803 Eight-Way transistor array for a R2R remote for a Teac X-10R 
+ an ULN2803 Eight-Way transistor array for a R2R remote for a Teac X-10R/X-7R 
 
- The code is largely based on a digital clock example from thelink below
+ The code is largely based on a digital clock example from the link below
  This examples uses the hardware SPI only. 
- 
+
+YouTube link to setup board  https://youtu.be/b8254--ibmM
+For the board select TTGO_Lora32 
  Based on clock sketch by Gilchrist 6/2/2014 1.0
  Adapted by Nathan Stevens 10/14/2022
- @version 1.0 10/19/2022 
+ @version 1.1 01/18/2023 
  
 A few colour codes:
  
@@ -100,7 +102,8 @@ void setup(void) {
 
   Serial.begin(115200);
   SerialBT.enableSSP();
-  SerialBT.begin("ESP32_R2R"); //Bluetooth device name
+  SerialBT.begin("ESP32_R2R_X7R"); //Bluetooth device name
+  //SerialBT.begin("ESP32_R2R_X10R"); //Bluetooth device name
   
   Serial.println("Device started, ready to pair with bluetooth!");
 }
@@ -269,6 +272,7 @@ void setCommandPin(int pin, String currentMode, boolean play) {
   command = 'X';
 }
 
+// this is used to set 2 pins high then low. It used for recording
 void setCommandPin2(int pin1, int pin2, String currentMode, boolean play) {
   mode = currentMode;
   playing = play;
